@@ -11,10 +11,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "bitbag/shipping-export-plugin": "^1.7",
+        "bitbag/shipping-export-plugin": "^3",
         "giggsey/libphonenumber-for-php": "^8.13",
         "setono/sylius-pickup-point-plugin": "^1.1",
-        "sylius/sylius": "^1.11"
+        "sylius/sylius": "^1"
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -48,7 +48,11 @@
         "polishsymfonycommunity/symfony-mocker-container": "^1.0"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "branch-alias": {

@@ -67,7 +67,7 @@ services:
   ikuzo.boxtal.event_listener.boxtal_shipping_export:
     class: Ikuzo\SyliusBoxtalPlugin\EventListener\BoxtalShippingExportEventListener
     arguments:
-      - '@session.flash_bag'
+      - '@request_stack'
       - '@filesystem'
       - '@bitbag.manager.shipping_export'
       - '%bitbag.shipping_labels_path%'

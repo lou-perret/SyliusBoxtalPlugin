@@ -7,19 +7,22 @@ use Doctrine\Persistence\ObjectManager;
 use Ikuzo\SyliusBoxtalPlugin\Boxtal\Client;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Webmozart\Assert\Assert;
 
 final class BoxtalShippingExportEventListener
 {
-
+    private FlashBagInterface $flashBag;
     public function __construct(
-        private FlashBagInterface $flashBag,
+        private RequestStack $requestStack,
         private Filesystem $filesystem,
         private ObjectManager $shippingExportManager,
         private string $shippingLabelsPath,
         private Client $client
     ) {
+        $session = $requestStack->getSession();
+        $this->flashBag = $requestStack->getSession()->getBag('flash');
     }
 
     public function exportShipment(ResourceControllerEvent $event): void
